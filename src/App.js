@@ -8,7 +8,7 @@ import './App.css';
 
 @connect(
   //state
-  state=>({num:state}),
+  state=>({num:state.counter}),
   //function
   { addGUN, removeGUN, addGunAsync },
 )

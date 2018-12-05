@@ -5,17 +5,27 @@ import App from './App';
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk'
 import { Provider } from 'react-redux'
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Link, Switch, NavLink } from 'react-router-dom'
 import { counter } from './index.redux'
+import reducers from './reducers'
+import Dashboard from './dashboard'
 import Auth from './Auth'
+import './config'
 // import registerServiceWorker from './registerServiceWorker';
 // registerServiceWorker();
 
-const reduxDevtools = window.devToolsExtension? window.devToolsExtension() : ()=>{}
-const store = createStore(counter, compose(
+const reduxDevtools = window.devToolsExtension? window.devToolsExtension() : f=>f
+// const store = createStore(counter, compose(
+//     applyMiddleware(thunk),
+//     reduxDevtools
+//   ))
+
+const store = createStore(reducers, compose(
     applyMiddleware(thunk),
     reduxDevtools
   ))
+
+console.log(store.getState())
 
 function Erying(){
   return <h2>erying</h2>
@@ -30,7 +40,6 @@ class Test extends React.Component{
   //  super(props);
   //}
   render(){
-    console.log(this.props)
     return <h2>Test {this.props.match.params.location}</h2>
   }
 }
@@ -52,10 +61,15 @@ ReactDOM.render(
             <li>
               <Link to="/sanying">3营</Link>
             </li>
+            <li>
+              <NavLink  activeClassName="selected" to="/erying">NavLink to Erying</NavLink>
+            </li>
           </ul>
           <Switch>
             {/*只渲染命中的第一个Route*/}
+            { /* exact 完全匹配 */}
             <Route path="/" exact component={App}></Route>
+            <Route path="/dashboard" component={Dashboard}></Route>
             <Route path="/erying" component={Erying}></Route>
             <Route path="/sanying" component={Sanying}></Route>
             <Route path="/login" component={Auth}></Route>

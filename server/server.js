@@ -15,16 +15,16 @@ const User = mongoose.model("user", new mongoose.Schema({
   age:{type:Number,require:true}
 }))
 //新增数据
-// User.create({
-//   user:'xiaohua',
-//   age:12
-// },function(err, doc){
-//   if(!err){
-//     console.log(doc)
-//   }else{
-//     console.log(err)
-//   }
-// })
+User.create({
+  user:'xiaohua',
+  age:12
+},function(err, doc){
+  if(!err){
+    console.log(doc)
+  }else{
+    console.log(err)
+  }
+})
 //更新数据
 // User.update({'user':'xiaohua'},{'$set':{age:26}},function(err, doc){
 //   if(!err){
