@@ -1,2 +1,2 @@
 # redux
-react+router+redux+nodejs
+react+router+redux+express+nodejs+mongoDB
