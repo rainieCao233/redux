@@ -9,6 +9,8 @@ import reducers from './reducers'
 import './config'
 import Login from './container/login/login'
 import Register from './container/register/register'
+import AuthRoute from './component/authroute/authroute'
+import './index.css'
 
 const reduxDevtools = window.devToolsExtension? window.devToolsExtension() : f=>f
 const store = createStore(reducers, compose(
@@ -18,11 +20,16 @@ const store = createStore(reducers, compose(
 
 console.log(store.getState())
 
+function Boss(){
+  return <h2>123</h2>
+}
 ReactDOM.render(
   (
     <Provider store={store}>
       <BrowserRouter>
         <div>
+          <AuthRoute></AuthRoute>
+          <Route path="/boss" component={Boss} />
           <Route path="/login" component={Login} />
           <Route path="/Register" component={Register} />
         </div>
