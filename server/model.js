@@ -6,4 +6,28 @@ mongoose.connection.on('connected',function(){
   console.log('mongo success')
 })
 
-module.exports = Mongo
+const model = {
+  user:{
+    'user':{type:String,require:true},
+    'pwd':{type:String,require:true},
+    'type':{type:String,require:true},
+    'avatar':{type:String},
+    'desc':{type:String},
+    'title':{type:String}, // 职位名
+    'company':{type:String},
+    'money':{type:String}  // boss可提供多少钱
+  },
+  chat:{
+
+  }
+}
+
+for(let m in model){
+  mongoose.model(m, new mongoose.Schema(model[m]))
+}
+
+module.exports = {
+  getModel:function(name){
+    return mongoose.model(name);
+  }
+}

@@ -4,6 +4,7 @@ import { List, InputItem, WingBlank, WhiteSpace, Button, Radio, Flex } from 'ant
 import axios from 'axios'
 import { connect } from 'react-redux'
 import { register } from '../../redux/user.redux'
+import { Redirect } from 'react-router-dom'
 
 @connect(
 	state => state.user,
@@ -42,10 +43,11 @@ class Register extends React.Component{
     //   })
 	}
 	render(){
-	console.log("this.props",this.props)
-	const RadioItem = Radio.RadioItem
+		console.log("this.props",this.props)
+		const RadioItem = Radio.RadioItem
 		return (
 			<div>
+				{ this.props.redirectTo ? <Redirect to={this.props.redirectTo} /> : null}
 				<Logo />
 				<h4>注册页面</h4>
 				<WingBlank>

@@ -1,8 +1,15 @@
 import React from 'react'
 import axios from 'axios'
 import { withRouter } from 'react-router-dom'
+import { loadData } from '../../redux/user.redux'
+import { connect } from 'react-redux'
 
 @withRouter
+
+@connect(
+  null,
+  { loadData }
+)
 
 class AuthRoute extends React.Component{
   constructor(props){
@@ -23,14 +30,15 @@ class AuthRoute extends React.Component{
           if(res.data.code == 0){  // 登陆信息
 
           }else{
-            this.props.history.push('/login')
+            // this.props.history.push('/login')
+            this.props.loadData(res.data.data)
           }
         }
       })
   }
   render(){
     return (
-      <h1></h1>
+      null
     )
   }
 }
