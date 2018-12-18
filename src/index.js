@@ -10,6 +10,7 @@ import './config'
 import Login from './container/login/login'
 import Register from './container/register/register'
 import BossInfo from './container/bossinfo/bossinfo'
+// import GeniusInfo from './container/geniusinfo/geniusinfo'
 import AuthRoute from './component/authroute/authroute'
 import './index.css'
 
@@ -31,7 +32,8 @@ ReactDOM.render(
         <div>
           <AuthRoute></AuthRoute>
           <Route path="/boss" component={Boss} />
-          {/* <Route path="/bossinfo" component={BossInfo} /> */}
+          <Route path="/bossinfo" component={BossInfo} />
+          {/* <Route path="/geniusinfo" component={GeniusInfo} /> */}
           <Route path="/login" component={Login} />
           <Route path="/Register" component={Register} />
         </div>

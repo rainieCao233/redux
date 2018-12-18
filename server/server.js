@@ -2,8 +2,6 @@ const express = require('express')
 const bodyParser = require("body-parser")
 const cookieParser = require("cookie-parser")
 const userRouter = require('./user')
-const bodyParser = require('body-parser')
-const cookieParser = require('cookie-parser')
 
 const app = express()   //新建app
 

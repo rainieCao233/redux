@@ -27,12 +27,12 @@ Router.get('/info', function(req, res){
       return res.json({code:0, data:doc})
     }
   })
-  User.findOne({_id:userid}, _filter, function(err, doc){
-    if(err)
-      return res.json({code: 1, msg:"后端出错"});
-    if(doc)
-      return res.json({code: 0, data:doc});
-  })
+  // User.findOne({_id:userid}, _filter, function(err, doc){
+  //   if(err)
+  //     return res.json({code: 1, msg:"后端出错"});
+  //   if(doc)
+  //     return res.json({code: 0, data:doc});
+  // })
 })
 
 Router.post('/register', function(req, res){
