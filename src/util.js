@@ -1,10 +1,8 @@
-export function getRedirectPath({type, avatar}){
-  // 根据用户信息获取跳转地址
-  // user.type /boss /genius
-  // user.avatar /bossinfo /geniusinfo
-  let url = (type === "boss")?'/boss':'/genius'
-  if(!avatar){
-    url += 'info'
+export function getRedirectPath({type, avator}){
+  // 根据用户信息跳转不同地址
+  let url = (type === 'boss')?'/boss':'/genius'
+  if(!avator){
+    url += "info"
   }
-  return url
+  return url;
 }

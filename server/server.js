@@ -1,13 +1,15 @@
 const express = require('express')
+const bodyParser = require("body-parser")
+const cookieParser = require("cookie-parser")
 const userRouter = require('./user')
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 
 const app = express()   //新建app
 
-app.use(cookieParser()) // 解析cookie
-app.use(bodyParser())  // 解析post过来的json
 
+app.use(cookieParser())
+app.use(bodyParser.json())
 app.use('/user', userRouter)
 
 app.listen(9093,function(){

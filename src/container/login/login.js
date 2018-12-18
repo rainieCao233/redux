@@ -1,8 +1,8 @@
 import React from 'react'
 import Logo from './../../component/logo/logo'
 import { List, InputItem, WingBlank, WhiteSpace, Button } from 'antd-mobile'
-import { login } from '../../redux/user.redux'
 import { connect } from 'react-redux'
+import { login } from '../../redux/user.redux'
 import { Redirect } from 'react-router-dom'
 
 @connect(
@@ -12,15 +12,23 @@ import { Redirect } from 'react-router-dom'
 class Login extends React.Component{
 	constructor(props){
 		super(props);
-		this.register = this.register.bind(this)
-		this.login = this.login.bind(this)
 		this.state = {
 			user:'',
 			pwd:''
 		}
+		this.handleLogin = this.handleLogin.bind(this)	
+		this.register = this.register.bind(this)	
+		}
+	handleChange(key, value){
+		this.setState({
+			[key]:value
+		})
+	}
+	handleLogin(){
+		this.props.login(this.state)	
 	}
 	register(){
-		this.props.history.push("/register")
+		// this.props.history.push('/register')
 	}
 	handleChange(key, value){
 		this.setState({
@@ -33,7 +41,7 @@ class Login extends React.Component{
 	render(){
 		return (
 			<div>
-				{ this.props.redirectTo ? <Redirect to={this.props.redirectTo} /> : null}
+				{this.props.redirectTo?<Redirect to={this.props.redirectTo} />:null}
 				<Logo />
 				<h4>登录页面</h4>
 				<WingBlank>
@@ -44,7 +52,7 @@ class Login extends React.Component{
 						<InputItem onChange={v=>this.handleChange('pwd',v)}>密码</InputItem>
 					</List>
 					<WhiteSpace />
-					<Button type="primary" onClick={this.login}>登录</Button>
+					<Button type="primary" onClick={this.handleLogin}>登录</Button>
 					<WhiteSpace />
 					<Button type="primary" onClick={this.register}>注册</Button>
 				</WingBlank>
