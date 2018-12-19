@@ -68,9 +68,24 @@ Router.post('/login', function(req, res){
   })
 })
 
+Router.post('/update', function(req, res){
+  const data = req.body
+  const userid = req.cookies.userid
+  if(!userid){
+    return json.dumps({code:1})
+  }
+  User.findByIdAndUpdate(userid, data, function(err, doc){
+    const obj = Object.assign({},{
+      user:doc.user,
+      type:doc.type,
+    }, data)
+    return res.json({code:0, data:obj})
+  })
+})
+
 function md5Pwd(pwd){
   const salt = 'idyasdidasjgdaiusashgdfau' + pwd
-  return Utils.md5(Utils.md5(salt));
+  return Utils.md5(Utils.md5(salt))
 }
 
 module.exports = Router

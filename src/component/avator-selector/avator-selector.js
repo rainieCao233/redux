@@ -1,7 +1,12 @@
 import React from 'react'
 import { Grid, List } from 'antd-mobile';
+import propTypes from 'prop-types';  //类型校验
 
 class AvatorSelector extends React.Component{
+  static propTypes = {
+    selectAvator:propTypes.func.isRequired  //属性检测
+  }
+
   constructor(props){
     super(props)
     this.state = {}

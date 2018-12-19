@@ -9,10 +9,6 @@ import { loadData } from '../../redux/user.redux'
   null,
   {loadData}
 )
-@connect(
-  null,
-  { loadData }
-)
 
 class AuthRoute extends React.Component{
   constructor(props){
