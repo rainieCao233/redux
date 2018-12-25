@@ -74,7 +74,7 @@ Router.post('/update', function(req, res){
   if(!userid){
     return json.dumps({code:1})
   }
-  User.findByIdAndUpdate(userid, data, function(err, doc){
+  User.findOneAndUpdate(userid, data, function(err, doc){
     const obj = Object.assign({},{
       user:doc.user,
       type:doc.type,
