@@ -34,8 +34,9 @@ ReactDOM.render(
             <Route path="/bossinfo" component={BossInfo} />
             <Route path="/geniusinfo" component={GeniusInfo} />
             <Route path="/login" component={Login} />
-            <Route path="/Register" component={Register} />
-            <Route component={DashBoard}></Route>
+            <Route path="/register" component={Register} />
+            <Route path="/dashboard" component={DashBoard} />
+            {/* <Route component={DashBoard} /> */}
           </Switch>
         </div>
       </BrowserRouter>

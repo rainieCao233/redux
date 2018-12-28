@@ -6,13 +6,14 @@ import { loadData } from '../../redux/user.redux'
 
 @withRouter
 @connect(
-  null,
+  state=>state,
   {loadData}
 )
 
 class AuthRoute extends React.Component{
   constructor(props){
     super(props)
+    console.log("23",this.props)
   }
   componentDidMount(){
     const publicList = ['/login', '/register']
